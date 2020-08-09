@@ -28,11 +28,11 @@ class Tab2 extends Component {
   }; */
 
   state = {
-    center: [60.938043, 30.337157],
+    center: [-0.1862513, -78.4937723],
     zoom: 17,
     draggable: true,
-    lat: 60.955413,
-    lng: 30.337844
+    lat: -0.1862513,
+    lng: -78.4937723
   };
   //@ts-ignore
   onCircleInteraction(childKey, childProps, mouse) {
@@ -88,11 +88,11 @@ class Tab2 extends Component {
         //@ts-ignore
         onClick={() => console.log('mapClick')}
         yesIWantToUseGoogleMapApiInternals
-          onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps, 
+        onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps, 
             // @ts-ignore
-            60.955413,
+            -0.1862513,
             // @ts-ignore 
-            30.337844)
+            -78.4937723)
             
           }
         
