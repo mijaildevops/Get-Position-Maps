@@ -8,13 +8,14 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
   let marker = new maps.Marker({
   position: { lat: Lat, lng: Long },
   map,
-  title: 'Hello World!'
+  title: 'Hello World!',
+  draggable: true
   });
   return marker;
  };
 
- function initMap(): void {
-  const myLatlng = { lat: -25.363, lng: 131.044 };
+ /* function initMap(): void {
+  const myLatlng = { lat: -0.1862513, lng: -78.4937723 };
  // @ts-ignore
   const map = new google.maps.Map(
     document.getElementById("map") as HTMLElement,
@@ -44,16 +45,16 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
      // @ts-ignore
     map.setCenter(marker.getPosition() as google.maps.LatLng);
   });
-}
+} */
 
  
 class Tab1 extends Component {
   static defaultProps = {
     center: {
-      lat: 59.95,
-      lng: 30.33
+      lat: -0.1862513,
+      lng: -78.4937723
     },
-    zoom: 15
+    zoom: 17
     
   };
 
@@ -68,14 +69,25 @@ class Tab1 extends Component {
           defaultCenter={this.props.center}
           //@ts-ignore
           defaultZoom={this.props.zoom}
+          //@ts-ignore
+          onChildMouseDown={this.onCircleInteraction}
+          //@ts-ignore
+          onChildMouseUp={this.onCircleInteraction3}
+          //@ts-ignore
+          onChildMouseMove={this.onCircleInteraction}    
+          //@ts-ignore
+          onChildClick={() => console.log('child click') }
+          //@ts-ignore
+          onClick={(event) => console.log('mapClick',event)}
+          
           // @ts-ignore
          
           yesIWantToUseGoogleMapApiInternals
           onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps, 
             // @ts-ignore
-            59.95,
+            -0.1862513,
             // @ts-ignore 
-            30.33)}
+            -78.4937723)}
             
         >
           <AnyReactComponent

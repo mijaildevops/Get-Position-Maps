@@ -31,7 +31,7 @@ class Tab2 extends Component {
   state = {
     center: [-0.1862513, -78.4937723],
     zoom: 17,
-    draggable: true,
+    draggable: false,
     lat: -0.1862513,
     lng: -78.4937723
   };
@@ -39,7 +39,7 @@ class Tab2 extends Component {
   onCircleInteraction(childKey, childProps, mouse) {
     // function is just a stub to test callbacks
     this.setState({
-      draggable: true,
+      draggable: false,
       lat: mouse.lat,
       lng: mouse.lng
     });
