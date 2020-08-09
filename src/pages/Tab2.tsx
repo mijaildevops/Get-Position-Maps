@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import './Tab2.css';
  //@ts-ignore
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
@@ -110,6 +111,7 @@ class Tab2 extends Component {
     );
   }
 }
+
  
 /* export default SimpleMap; */
 
