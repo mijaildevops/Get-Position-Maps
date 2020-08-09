@@ -1,0 +1,7 @@
+{
+  "name": "MapCordenadas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
