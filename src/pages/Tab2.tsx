@@ -14,24 +14,7 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
   return marker;
  };
 
- // @ts-ignore
-const NewCordenadas = (Latitud, Longitud) => {
-  console.log('Nueva Latitud: ', Latitud);
-  console.log('Nueva Longitud: ', Longitud);
 
-  
-  
-}
-
- // @ts-ignore
- const onMapChange = (Latitud, Longitud) => {
-  console.log('Nueva Latitud: ', Latitud);
-  console.log('Nueva Longitud: ', Longitud);
-  
-
-  
-  
-}
 
  
 class Tab2 extends Component {
@@ -43,6 +26,14 @@ class Tab2 extends Component {
     zoom: 17
     
   };
+
+  constructor(props:any){
+    super(props);
+    this.state={
+      lat:0,
+      lng:0,
+    }
+  }
 
  /*  // @ts-ignore
   const onMapChange = ({ lat, lng }:any) => {
@@ -62,6 +53,11 @@ class Tab2 extends Component {
 
  
   render() {
+    
+    const onMapChage = (lat:any , lng:any) => {
+      this.setState({lat:lat,lng:lng});
+      console.log(lat,lng);
+    }
     console.log('State Incial')
     //@ts-ignore
     console.log('Center: ', this.props.center)
@@ -88,7 +84,7 @@ class Tab2 extends Component {
             //@ts-ignore
             //NewCordenadas (event.lat, event.lng)
             //@ts-ignore
-            onMapChange (event.lat, event.lng)
+            onMapChage (event.lat, event.lng)
             
           }
           
@@ -96,16 +92,17 @@ class Tab2 extends Component {
           yesIWantToUseGoogleMapApiInternals
           onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps, 
             // @ts-ignore
-            -0.1862513,
+            this.state.lat,
             // @ts-ignore 
-            -78.4937723)}
+            this.state.lng)}
           
             
         >
           <AnyReactComponent
           //@ts-ignore
-            lat={59.955413}
-            lng={30.337844}
+            lat={this.state.lat}
+            //@ts-ignore
+            lng={this.state.lng}
             text="My Marker"
           />
         </GoogleMapReact>
