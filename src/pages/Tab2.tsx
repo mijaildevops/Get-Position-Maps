@@ -96,9 +96,9 @@ class Tab2 extends Component {
           yesIWantToUseGoogleMapApiInternals
           onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps, 
             // @ts-ignore
-            59.955413,
+            -0.1862513,
             // @ts-ignore 
-            30.337844)}
+            -78.4937723)}
           
             
         >
