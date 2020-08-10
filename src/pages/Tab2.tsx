@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import './Tab2.css';
  //@ts-ignore
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
@@ -9,109 +8,111 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
   let marker = new maps.Marker({
   position: { lat: Lat, lng: Long },
   map,
-  title: 'Hello World!'
+  title: 'Hello World!',
+  draggable: true
   });
   return marker;
  };
 
+ // @ts-ignore
+const NewCordenadas = (Latitud, Longitud) => {
+  console.log('Nueva Latitud: ', Latitud);
+  console.log('Nueva Longitud: ', Longitud);
+
+  
+  
+}
+
+ // @ts-ignore
+ const onMapChange = (Latitud, Longitud) => {
+  console.log('Nueva Latitud: ', Latitud);
+  console.log('Nueva Longitud: ', Longitud);
+  
+
+  
+  
+}
+
+ 
+class Tab2 extends Component {
+  static defaultProps = {
+    center: {
+      lat: -0.1862513,
+      lng: -78.4937723
+    },
+    zoom: 17
+    
+  };
+
+ /*  // @ts-ignore
+  const onMapChange = ({ lat, lng }:any) => {
+    this.setState({
+      center: {
+        lat: -10.2062513,
+        lng: -36.5037723
+      }
+    });
+    console.log('onMapChange Funtion')
+    console.log('Nuevos estados')
+    //@ts-ignore
+    console.log('Center: ', this.props.center)
+  } */
 
 
 
  
-class Tab2 extends Component {
-  /* static defaultProps = {
-    center: {
-      lat: 59.95,
-      lng: 30.33
-    },
-    zoom: 15
-    
-  }; */
-
-  state = {
-    center: [-0.1862513, -78.4937723],
-    zoom: 17,
-    draggable: false,
-    lat: -0.1862513,
-    lng: -78.4937723
-  };
-  //@ts-ignore
-  onCircleInteraction(childKey, childProps, mouse) {
-    // function is just a stub to test callbacks
-    this.setState({
-      draggable: false,
-      lat: mouse.lat,
-      lng: mouse.lng
-    });
-   
-    console.log('onCircleInteraction called with', childKey, childProps, mouse);
-  }
-  //@ts-ignore
-  onCircleInteraction3(childKey, childProps, mouse) {
-    this.setState({draggable: true});
-    // function is just a stub to test callbacks  
-    console.log('onCircleInteraction called with', childKey, childProps, mouse);
-    
-  }
-  //@ts-ignore
-    _onChange = ({center, zoom}) => {
-      this.setState({
-        center: center,
-        zoom: zoom,      
-      });
-    }
-
-
-
-
   render() {
+    console.log('State Incial')
+    //@ts-ignore
+    console.log('Center: ', this.props.center)
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
-        
-        <GoogleMapReact 
-        //@ts-ignore
-        draggable={this.state.draggable}
-        //@ts-ignore
-        onChange={this._onChange}
-        //@ts-ignore
-        center={this.state.center}
-        //@ts-ignore
-        zoom={this.state.zoom}
-        //@ts-ignore
-        onChildMouseDown={this.onCircleInteraction}
-        //@ts-ignore
-        onChildMouseUp={this.onCircleInteraction3}
-        //@ts-ignore
-        onChildMouseMove={this.onCircleInteraction}    
-        //@ts-ignore
-        onChildClick={() => console.log('child click')}
-        //@ts-ignore
-        onClick={() => console.log('mapClick')}
-        yesIWantToUseGoogleMapApiInternals
-        onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps, 
-            // @ts-ignore
-            -0.1862513,
-            // @ts-ignore 
-            -78.4937723)
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: 'AIzaSyAPu1qOxa9vOx9wvj9NQcW5-Ixy1kDI2bQ' }}
+          //@ts-ignore
+          defaultCenter={this.props.center}
+          //@ts-ignore
+          defaultZoom={this.props.zoom}
+          //@ts-ignore
+          onChildMouseDown={this.onCircleInteraction}
+          //@ts-ignore
+          onChildMouseUp={this.onCircleInteraction3}
+          //@ts-ignore
+          onChildMouseMove={this.onCircleInteraction}    
+          //@ts-ignore
+          onChildClick={() => console.log('child click') }
+          //@ts-ignore
+          onClick={(event) => 
+            // console.log('mapClick',event.lat, event.lng)
+            //@ts-ignore
+            //NewCordenadas (event.lat, event.lng)
+            //@ts-ignore
+            onMapChange (event.lat, event.lng)
             
           }
-        
-       >
-        <div 
-          className="place" 
+          
+          // @ts-ignore
+          yesIWantToUseGoogleMapApiInternals
+          onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps, 
+            // @ts-ignore
+            59.955413,
+            // @ts-ignore 
+            30.337844)}
+          
+            
+        >
+          <AnyReactComponent
           //@ts-ignore
-          lat={this.state.lat} 
-          //@ts-ignore
-          lng={this.state.lng}>
-            12
-       </div>
-      </GoogleMapReact>
+            lat={59.955413}
+            lng={30.337844}
+            text="My Marker"
+          />
+        </GoogleMapReact>
       </div>
     );
   }
 }
-
  
 /* export default SimpleMap; */
 

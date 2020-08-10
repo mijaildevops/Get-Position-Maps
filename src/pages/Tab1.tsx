@@ -14,38 +14,14 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
   return marker;
  };
 
- /* function initMap(): void {
-  const myLatlng = { lat: -0.1862513, lng: -78.4937723 };
  // @ts-ignore
-  const map = new google.maps.Map(
-    document.getElementById("map") as HTMLElement,
-    {
-      zoom: 4,
-      center: myLatlng
-    }
-  );
- // @ts-ignore
-  const marker = new google.maps.Marker({
-    position: myLatlng,
-    map,
-    title: "Click to zoom"
-  });
+const NewCordenadas = (Latitud, Longitud) => {
+  console.log('Nueva Latitud: ', Latitud);
+  console.log('Nueva Longitud: ', Longitud);
 
-  map.addListener("center_changed", () => {
-    // 3 seconds after the center of the map has changed, pan back to the
-    // marker.
-    window.setTimeout(() => {
-       // @ts-ignore
-      map.panTo(marker.getPosition() as google.maps.LatLng);
-    }, 3000);
-  });
-
-  marker.addListener("click", () => {
-    map.setZoom(8);
-     // @ts-ignore
-    map.setCenter(marker.getPosition() as google.maps.LatLng);
-  });
-} */
+  
+  
+}
 
  
 class Tab1 extends Component {
@@ -58,8 +34,13 @@ class Tab1 extends Component {
     
   };
 
+
+
  
   render() {
+    console.log('State Incial')
+    //@ts-ignore
+    console.log('Center: ', this.props.center)
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
@@ -78,16 +59,18 @@ class Tab1 extends Component {
           //@ts-ignore
           onChildClick={() => console.log('child click') }
           //@ts-ignore
-          onClick={(event) => console.log('mapClick',event)}
+          onClick={(event) => 
+            // console.log('mapClick',event.lat, event.lng)
+            //@ts-ignore
+            //NewCordenadas (event.lat, event.lng)
+            //@ts-ignore
+            onMapChange (event.lat, event.lng)
+            
+          }
           
           // @ts-ignore
          
-          yesIWantToUseGoogleMapApiInternals
-          onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps, 
-            // @ts-ignore
-            -0.1862513,
-            // @ts-ignore 
-            -78.4937723)}
+          
             
         >
           <AnyReactComponent
